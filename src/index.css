@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #557A95;
+  --soft-sage: #86A789;
+  --warm-bg: #FAF9F6;
+}
+
+body {
+  background-color: var(--warm-bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #2C3E50;
+}
+
+.modern-card {
+  border: none;
+  border-radius: 25px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important;
+}
+
+.btn-pill {
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 600;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(10px);
+}
