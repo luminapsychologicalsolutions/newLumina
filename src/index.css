@@ -7,9 +7,9 @@
 }
 
 body {
-  background-color: var(--warm-bg);
+  background-color: #F0F4F8 !important; /* Very soft blue-grey */
+  color: #2D3748;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #2C3E50;
 }
 
 .modern-card {
@@ -33,4 +33,30 @@ body {
 .glass-nav {
   background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(10px);
+}
+.experts-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 24px;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+}
+
+.experts-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Forces the cards to stay a specific size */
+.expert-card-wrapper {
+  flex: 0 0 auto; 
+  width: 280px; /* Adjust this to make cards wider or narrower */
+}
+
+@media (max-width: 768px) {
+  .expert-card-wrapper {
+    width: 85%; /* Shows one card clearly on your Pixel 4 */
+  }
 }

@@ -9,7 +9,7 @@ export default function About() {
         <Col lg={6}>
           <h1 className="display-4 fw-bold text-primary mb-4">Our Mission</h1>
           <p className="lead">We believe that mental wellness should be accessible, modern, and free from stigma.</p>
-          <p>MindEase was created to bridge the gap between traditional clinical therapy and the modern digital world. We provide a warm, safe, and interesting environment for your personal growth.</p>
+          <p>Lumina Wellbeing was created to bridge the gap between traditional clinical therapy and the modern digital world. We provide a warm, safe, and interesting environment for your personal growth.</p>
         </Col>
         <Col lg={6}>
           <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600" className="img-fluid rounded-5 shadow" alt="About Us" />

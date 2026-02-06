@@ -1,98 +1,69 @@
 import React from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { Mail, MapPin, Phone, MessageSquare } from 'lucide-react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Mail, Clock, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Message sent! We will get back to you soon.");
-  };
+  // Replace with your actual WhatsApp Business number (Country Code + Number)
+  const whatsappNumber = "918281944181"; 
+  const message = "hello, I would like to inquire about a consultation.";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const Email = "luminapsychologicalsolutions@gmail.com"
 
   return (
-    <Container className="py-5">
-      <div className="text-center mb-5 mt-3">
-        <h1 className="fw-bold">Get In Touch</h1>
-        <p className="text-muted mx-auto" style={{maxWidth: '500px'}}>
-          Have questions about our services? Our team is here to support you on your mental wellness journey.
-        </p>
-      </div>
+    <div style={{ backgroundColor: '#F0F4F8', minHeight: '80vh' }} className="py-5">
+      <Container className="py-5">
+        <div className="text-center mb-5">
+          <h2 className="fw-bold" style={{ color: '#1B263B' }}>Contact Us</h2>
+          <div style={{ width: '50px', height: '3px', background: '#C5A059', margin: '15px auto' }}></div>
+          <p className="text-muted">We are here to support your journey with absolute discretion.</p>
+        </div>
 
-      <Row className="justify-content-center">
-        <Col lg={10}>
-          <Row className="g-5">
-            {/* Contact Info Column */}
-            <Col md={5}>
-              <div className="h-100 d-flex flex-column justify-content-center">
-                <div className="mb-4 d-flex align-items-start gap-3">
-                  <div className="p-3 rounded-4 bg-white shadow-sm">
-                    <Mail className="text-primary" />
-                  </div>
-                  <div>
-                    <h6 className="fw-bold mb-1">Email Us</h6>
-                    <p className="text-muted small">support@mindease.com</p>
-                  </div>
-                </div>
+        <Row className="justify-content-center g-4">
+          {/* Option 1: Email */}
+          <Col md={4}>
+            <Card className="h-100 border-0 shadow-sm text-center p-4">
+              <Mail className="mx-auto mb-3" style={{ color: '#5263deff' }} />
+              <h5 className="fw-bold">Email Us</h5>
+              <p className="text-muted small">For detailed inquiries and private documentation.</p>
+              <a 
+                href={`mailto:${Email}`} 
+                className="text-decoration-none fw-bold mt-auto" 
+                style={{ color: '#2C3E50', fontSize: '0.85rem' }}
+              >
+                start chat
+              </a>
+            </Card>
+          </Col>
 
-                <div className="mb-4 d-flex align-items-start gap-3">
-                  <div className="p-3 rounded-4 bg-white shadow-sm">
-                    <Phone className="text-primary" />
-                  </div>
-                  <div>
-                    <h6 className="fw-bold mb-1">Call Us</h6>
-                    <p className="text-muted small">+1 (555) 000-1234</p>
-                  </div>
-                </div>
+          {/* Option 2: WhatsApp (New) */}
+          <Col md={4}>
+            <Card className="h-100 border-0 shadow-sm text-center p-4">
+              <MessageCircle className="mx-auto mb-3" style={{ color: '#33ef78ff' }} />
+              <h5 className="fw-bold">WhatsApp</h5>
+              <p className="text-muted small">Instant messaging for quick concierge support.</p>
+              <a 
+                href={whatsappLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-decoration-none fw-bold mt-auto" 
+                style={{ color: '#2C3E50' }}
+              >
+                Start Chat
+              </a>
+            </Card>
+          </Col>
 
-                <div className="d-flex align-items-start gap-3">
-                  <div className="p-3 rounded-4 bg-white shadow-sm">
-                    <MapPin className="text-primary" />
-                  </div>
-                  <div>
-                    <h6 className="fw-bold mb-1">Visit Us</h6>
-                    <p className="text-muted small">123 Wellness Way, San Francisco, CA</p>
-                  </div>
-                </div>
-              </div>
-            </Col>
-
-            {/* Form Column */}
-            <Col md={7}>
-              <Card className="modern-card p-4 p-md-5 border-0 shadow-sm">
-                <Form onSubmit={handleSubmit}>
-                  <Row className="g-3">
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="small fw-bold">First Name</Form.Label>
-                        <Form.Control type="text" placeholder="John" className="rounded-pill p-3 border-light bg-light" required />
-                      </Form.Group>
-                    </Col>
-                    <Col md={6}>
-                      <Form.Group className="mb-3">
-                        <Form.Label className="small fw-bold">Last Name</Form.Label>
-                        <Form.Control type="text" placeholder="Doe" className="rounded-pill p-3 border-light bg-light" required />
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
-                  <Form.Group className="mb-3">
-                    <Form.Label className="small fw-bold">Email Address</Form.Label>
-                    <Form.Control type="email" placeholder="john@example.com" className="rounded-pill p-3 border-light bg-light" required />
-                  </Form.Group>
-
-                  <Form.Group className="mb-4">
-                    <Form.Label className="small fw-bold">How can we help?</Form.Label>
-                    <Form.Control as="textarea" rows={4} placeholder="Type your message here..." className="rounded-4 p-3 border-light bg-light" required />
-                  </Form.Group>
-
-                  <Button type="submit" variant="primary" className="btn-pill w-100 py-3 shadow d-flex align-items-center justify-content-center gap-2">
-                    <MessageSquare size={18} /> Send Message
-                  </Button>
-                </Form>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+          {/* Option 3: Office Hours */}
+          <Col md={4}>
+            <Card className="h-100 border-0 shadow-sm text-center p-4">
+              <Clock className="mx-auto mb-3" style={{ color: '#C5A059' }} />
+              <h5 className="fw-bold">Office Hours</h5>
+              <p className="text-muted small">Monday to Friday (Virtual Office)</p>
+              <p className="fw-bold mt-auto mb-0" style={{ color: '#2C3E50' }}>9:00 AM - 6:00 PM</p>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }

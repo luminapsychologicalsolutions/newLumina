@@ -21,13 +21,13 @@ export default function Footer() {
 
         {/* Ultra-Simple Social Media Icons */}
         <div className="d-flex justify-content-center gap-4 mb-3">
-          <a href="#" style={{ color: '#1A1A1A' }} aria-label="Instagram">
+          <a href="https://www.instagram.com/luminawellbeing_/" style={{ color: '#1A1A1A' }} aria-label="Instagram">
             <Instagram size={18} strokeWidth={1} />
           </a>
-          <a href="#" style={{ color: '#1A1A1A' }} aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/luminapsychologicalsolutions/" style={{ color: '#1A1A1A' }} aria-label="LinkedIn">
             <Linkedin size={18} strokeWidth={1} />
           </a>
-          <a href="mailto:hello@mindease.com" style={{ color: '#1A1A1A' }} aria-label="Email">
+          <a href="mailto:luminapsychologicalsolutions@gmail.com" style={{ color: '#1A1A1A' }} aria-label="Email">
             <Mail size={18} strokeWidth={1} />
           </a>
         </div>

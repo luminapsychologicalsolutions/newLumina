@@ -1,22 +1,29 @@
 import React from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Heart } from 'lucide-react';
 
 export default function Header() {
   return (
-    <Navbar expand="lg" className="glass-nav sticky-top py-3 shadow-sm">
+    <Navbar expand="lg" className="py-2 bg-white border-bottom shadow-sm sticky-top">
       <Container>
-        <Navbar.Brand as={Link} to="/" className="fw-bold text-primary d-flex align-items-center">
-          <Heart className="me-2" fill="#557A95" /> LuminaWellbeing
+        <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            style={{ height: '100px', width: 'auto', objectFit: 'contain' }}
+            className="me-2"
+          />
+          <span className="fw-bold " style={{ color: '#436488ff', fontSize: '1.4rem' }}>
+            LuminaWellbeing
+          </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto align-items-center gap-3">
+          <Nav className="ms-auto gap-3 fw-medium">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/about">About Us</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-            <Button as={Link} to="/login" variant="primary" className="btn-pill px-4 shadow-sm">Login</Button>
+            <Nav.Link as={Link} to="/tests">Tests</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
