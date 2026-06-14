@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 export default function About() {
   return (
     <Container 
-      className="d-flex align-items-center justify-content-center position-relative" 
+      className="d-flex align-items-center justify-content-center position-relative animate-fade-in-up" 
       style={{ minHeight: '80vh', overflow: 'hidden' }}
     >
       {/* Background Logo Text - Large and Transparent */}

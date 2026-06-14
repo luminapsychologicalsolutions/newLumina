@@ -60,3 +60,59 @@ body {
     width: 85%; /* Shows one card clearly on your Pixel 4 */
   }
 }
+
+/* Immersive animations and interactions */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Card Zooming and Glowing Effects */
+.immersive-card {
+  border-radius: 28px !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.immersive-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 20px 40px rgba(67, 100, 136, 0.12) !important;
+  border-color: rgba(85, 122, 149, 0.35) !important;
+}
+
+.immersive-card img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.immersive-card:hover img {
+  transform: scale(1.06);
+}
+
+.btn-pill {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(67, 100, 136, 0.2) !important;
+}
+
+/* Page fade-in stagger */
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }

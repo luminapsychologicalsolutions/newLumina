@@ -25,7 +25,7 @@ export default function Tests() {
   ];
 
   return (
-    <Container className="py-5 mt-4">
+    <Container className="py-5 mt-4 animate-fade-in-up">
       <div className="text-center mb-5">
         <h2 className="fw-bold text-uppercase" style={{ letterSpacing: '6px', color: '#1A1A1A' }}>Diagnostic Suite</h2>
         <div style={{ width: '40px', height: '1px', background: '#999', margin: '20px auto' }}></div>
@@ -35,7 +35,7 @@ export default function Tests() {
       <Row className="justify-content-center g-4">
         {testList.map((test, index) => (
           <Col md={4} key={index}>
-            <Card className="border-0 p-4 h-100 text-center shadow-sm bg-white">
+            <Card className="immersive-card border-0 p-4 h-100 text-center shadow-sm bg-white">
               <div className="mb-4" style={{ color: '#1A1A1A' }}>{test.icon}</div>
               <h6 className="fw-bold text-uppercase mb-3" style={{ letterSpacing: '2px' }}>{test.title}</h6>
               <p className="text-muted small mb-4" style={{ lineHeight: '1.8' }}>{test.desc}</p>

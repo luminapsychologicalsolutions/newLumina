@@ -23,11 +23,11 @@ export default function Home() {
   ];
 
   return (
-    <div style={{ backgroundColor: '#F8FAFC' }}>
+    <div className="animate-fade-in-up" style={{ backgroundColor: 'transparent' }}>
       {/* Refined Hero Section with Compatible Gradient */}
       <section className="py-5 text-center" style={{ 
-        background: 'linear-gradient(180deg, #E2E8F0 0%, #F8FAFC 100%)',
-        borderBottom: '1px solid #E2E8F0' 
+        background: 'linear-gradient(180deg, rgba(226, 232, 240, 0.55) 0%, rgba(248, 250, 252, 0.55) 100%)',
+        borderBottom: '1px solid rgba(226, 232, 240, 0.5)' 
       }}>
         <Container className="py-5">
           <h1 className="display-3 fw-bold mb-4" style={{ color: simpleBlue, letterSpacing: '-1px' }}>
@@ -49,7 +49,7 @@ export default function Home() {
       </section>
 
       {/* Experts Section */}
-      <section className="py-5 bg-white">
+      <section className="py-5 bg-transparent">
         <Container>
           <h2 className="text-center fw-bold mb-2" style={{ color: simpleBlue }}>Meet Our Experts</h2>
           <p className="text-center text-muted small mb-5">Swipe to explore our collective</p>
@@ -57,7 +57,7 @@ export default function Home() {
           <div className="experts-scroll-container">
             {consultants.map(c => (
               <div key={c.id} className="expert-card-wrapper">
-                <Card className="p-4 h-100 text-center border-0 shadow-sm" style={{ backgroundColor: '#EDF2F7', borderRadius: '24px' }}>
+                <Card className="immersive-card p-4 h-100 text-center border-0 shadow-sm" style={{ backgroundColor: '#EDF2F7', borderRadius: '24px' }}>
                   <Card.Img 
                     variant="top" 
                     src={c.img} 
@@ -70,7 +70,7 @@ export default function Home() {
                     
                     {/* Expertise: Black text, No background */}
                     <p 
-                      className="mt-auto fw-bold text-uppercase" 
+                      className="mt-auto fw-bold text-uppercase mb-3" 
                       style={{ 
                         color: '#000000', 
                         fontSize: '0.65rem', 
@@ -80,6 +80,15 @@ export default function Home() {
                     >
                       {c.expertise}
                     </p>
+
+                    <Button 
+                      as={Link} 
+                      to={`/consultant/${c.id}`} 
+                      className="rounded-pill w-100 border-0 text-white" 
+                      style={{ backgroundColor: simpleBlue, fontWeight: '600', fontSize: '0.8rem', padding: '8px 16px' }}
+                    >
+                      View Full Details
+                    </Button>
                   </Card.Body>
                 </Card>
               </div>

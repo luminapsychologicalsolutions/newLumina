@@ -10,7 +10,7 @@ export default function Contact() {
   const Email = "luminapsychologicalsolutions@gmail.com"
 
   return (
-    <div style={{ backgroundColor: '#F0F4F8', minHeight: '80vh' }} className="py-5">
+    <div style={{ backgroundColor: 'transparent', minHeight: '80vh' }} className="py-5 animate-fade-in-up">
       <Container className="py-5">
         <div className="text-center mb-5">
           <h2 className="fw-bold" style={{ color: '#1B263B' }}>Contact Us</h2>
