@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
-import { ArrowLeft, Star, Shield, Award, Briefcase, MapPin, CheckCircle, Clock } from 'lucide-react';
-import { consultantsData } from '../data'; // Ensure this path is correct
+import { ArrowLeft, Shield, Award, Briefcase, MapPin, CheckCircle, Clock } from 'lucide-react';
+import { consultantsData } from './Home';
 
 export default function ConsultantProfile() {
   const { id } = useParams();
@@ -36,25 +36,13 @@ export default function ConsultantProfile() {
         <Row className="g-4 align-items-start">
           {/* Profile Left Sidebar */}
           <Col lg={4} className="text-center pe-lg-4 border-lg-end" style={{ borderRight: '1px solid #E2E8F0' }}>
-            <div className="position-relative d-inline-block mb-3">
+            <div className="d-inline-block mb-4">
               <img 
                 src={consultant.img} 
                 alt={consultant.name} 
                 className="rounded-circle shadow-lg" 
                 style={{ width: '220px', height: '220px', objectFit: 'cover', border: '5px solid #fff' }} 
               />
-              <Badge 
-                bg="primary" 
-                className="position-absolute bottom-0 end-0 px-3 py-2 rounded-pill shadow-sm"
-                style={{ fontSize: '0.85rem', backgroundColor: '#557A95' }}
-              >
-                {consultant.experience} Exp
-              </Badge>
-            </div>
-            
-            <div className="d-flex justify-content-center align-items-center gap-2 mb-4">
-              <Star className="text-warning" fill="currentColor" size={20} />
-              <span className="fw-bold">4.9 (120 Reviews)</span>
             </div>
 
             {/* Quick Stats Box */}
