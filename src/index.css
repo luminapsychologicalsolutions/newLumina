@@ -1,62 +1,343 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+/* ============================================================
+   LuminaWellbeing — Design System
+   Theme: warm-indigo, calm & professional. Toggled via
+   [data-theme="light" | "dark"] on <html> (see ThemeContext).
+   ============================================================ */
 
-:root {
-  --primary: #557A95;
-  --soft-sage: #86A789;
-  --warm-bg: #FAF9F6;
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+  /* Brand */
+  --lw-indigo: #5B54E8;
+  --lw-indigo-dim: #7A74EE;
+  --lw-sand: #C79A56;
+  --lw-sand-dim: #D9B67B;
+
+  /* Type scale */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 0.2s;
+  --slow: 0.6s;
+
+  /* Radii / shadow */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 26px;
+  --r-pill: 999px;
 }
 
-body {
-  background-color: #F0F4F8 !important; /* Very soft blue-grey */
-  color: #2D3748;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+/* ---------- Dark theme (default) ---------- */
+:root,
+[data-theme="dark"]{
+  --bg: #0E0D13;
+  --bg-elevated: #17151F;
+  --bg-elevated-2: #1D1A29;
+  --text: #F4F2ED;
+  --text-muted: #A7A3B5;
+  --border: rgba(255,255,255,0.09);
+  --accent: var(--lw-indigo-dim);
+  --accent-contrast: #0E0D13;
+  --accent-2: var(--lw-sand-dim);
+  --shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+  --glow: radial-gradient(circle, rgba(122,116,238,0.35) 0%, rgba(122,116,238,0) 70%);
+  color-scheme: dark;
 }
 
-.modern-card {
-  border: none;
-  border-radius: 25px;
-  background: #ffffff;
-  transition: all 0.3s ease;
+/* ---------- Light theme ---------- */
+[data-theme="light"]{
+  --bg: #F6F3EC;
+  --bg-elevated: #FFFFFF;
+  --bg-elevated-2: #FBF9F4;
+  --text: #1B1A22;
+  --text-muted: #6E6B78;
+  --border: rgba(20,15,40,0.09);
+  --accent: var(--lw-indigo);
+  --accent-contrast: #FFFFFF;
+  --accent-2: var(--lw-sand);
+  --shadow: 0 20px 50px -20px rgba(30,20,60,0.18);
+  --glow: radial-gradient(circle, rgba(91,84,232,0.16) 0%, rgba(91,84,232,0) 70%);
+  color-scheme: light;
 }
 
-.modern-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important;
+/* ---------- Reset / base ---------- */
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body, html{
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background-color var(--slow) var(--ease), color var(--slow) var(--ease);
+  -webkit-font-smoothing: antialiased;
 }
 
-.btn-pill {
-  border-radius: 50px;
-  padding: 12px 30px;
+#root{ min-height: 100vh; display: flex; flex-direction: column; }
+
+img{ max-width: 100%; display: block; }
+
+a{ color: inherit; text-decoration: none; }
+
+::selection{ background: var(--accent); color: var(--accent-contrast); }
+
+::-webkit-scrollbar{ width: 10px; }
+::-webkit-scrollbar-track{ background: var(--bg); }
+::-webkit-scrollbar-thumb{ background: var(--border); border-radius: var(--r-pill); }
+
+:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0 0 0.5em;
+}
+
+h1.lw-display{ font-size: clamp(2.6rem, 5.5vw, 4.4rem); line-height: 1.05; font-weight: 500; }
+h2.lw-heading{ font-size: clamp(1.9rem, 3.4vw, 2.6rem); line-height: 1.15; }
+
+p{ color: var(--text-muted); line-height: 1.7; }
+
+.lw-eyebrow{
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.lw-lede{
+  font-size: 1.15rem;
+  max-width: 46ch;
+  color: var(--text-muted);
+}
+
+/* ---------- Layout helpers ---------- */
+.lw-section{ padding: 6rem 0; position: relative; }
+.lw-section-tight{ padding: 3.5rem 0; }
+
+/* ---------- Buttons ---------- */
+.lw-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease), background var(--fast) var(--ease), border-color var(--fast) var(--ease);
+  white-space: nowrap;
+}
+.lw-btn:active{ transform: translateY(1px) scale(0.98); }
+
+.lw-btn-primary{
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.lw-btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 16px 34px -12px color-mix(in srgb, var(--accent) 70%, transparent); }
+
+.lw-btn-ghost{
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.lw-btn-ghost:hover{ border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ---------- Cards / surfaces ---------- */
+.lw-card{
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: transform var(--fast) var(--ease), border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+.lw-card:hover{
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: var(--shadow);
+}
+
+.lw-badge{
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+/* ---------- Navbar ---------- */
+.lw-navbar{
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--slow) var(--ease), border-color var(--slow) var(--ease);
+}
+.lw-navbar .nav-link{
+  color: var(--text-muted) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color var(--fast) var(--ease);
+  position: relative;
+}
+.lw-navbar .nav-link:hover,
+.lw-navbar .nav-link.active{ color: var(--text) !important; }
+.lw-navbar .nav-link::after{
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width var(--fast) var(--ease);
+}
+.lw-navbar .nav-link:hover::after,
+.lw-navbar .nav-link.active::after{ width: 100%; }
+
+.lw-brand{ font-family: var(--font-display); font-size: 1.35rem; color: var(--text) !important; }
+.lw-brand-light{ font-weight: 300; color: var(--text-muted); }
+
+/* ---------- Theme toggle ---------- */
+.lw-theme-toggle{
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 1050;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform var(--fast) var(--ease), border-color var(--fast) var(--ease), background var(--fast) var(--ease);
+}
+.lw-theme-toggle:hover{ transform: rotate(-12deg) scale(1.06); border-color: var(--accent); }
+.lw-theme-toggle svg{ transition: transform var(--slow) var(--ease); }
+
+/* ---------- Footer ---------- */
+.lw-footer{
+  border-top: 1px solid var(--border);
+  background: var(--bg-elevated);
+  padding: 2.5rem 0;
+  margin-top: auto;
+}
+.lw-footer a{ color: var(--text-muted); transition: color var(--fast) var(--ease); }
+.lw-footer a:hover{ color: var(--accent); }
+
+/* ---------- Hero glow (signature element) ---------- */
+.lw-glow{
+  position: absolute;
+  inset: 0;
+  background: var(--glow);
+  filter: blur(10px);
+  animation: lw-breathe 7s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes lw-breathe{
+  0%, 100%{ opacity: 0.55; transform: scale(1); }
+  50%{ opacity: 1; transform: scale(1.08); }
+}
+
+/* ---------- Scroll reveal ---------- */
+.lw-reveal{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.lw-reveal.lw-visible{ opacity: 1; transform: translateY(0); }
+.lw-reveal-delay-1{ transition-delay: 0.1s; }
+.lw-reveal-delay-2{ transition-delay: 0.2s; }
+.lw-reveal-delay-3{ transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce){
+  .lw-reveal, .lw-glow, .lw-btn, .lw-card, .lw-theme-toggle{
+    animation: none !important;
+    transition: none !important;
+  }
+  .lw-reveal{ opacity: 1; transform: none; }
+}
+
+/* ---------- Forms (Bootstrap overrides) ---------- */
+.form-control, .form-select{
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--r-sm) !important;
+  padding: 0.75rem 1rem !important;
+}
+.form-control:focus, .form-select:focus{
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent) !important;
+}
+.form-control::placeholder{ color: var(--text-muted); opacity: 0.7; }
+
+/* ---------- Native Bootstrap component theming ----------
+   Covers any Card/Table/Alert/Button still using plain
+   react-bootstrap markup, so the whole app follows the
+   same theme without every page needing custom classes. */
+.card{
+  background: var(--bg-elevated) !important;
+  color: var(--text);
+  border: 1px solid var(--border) !important;
+}
+.card .text-muted{ color: var(--text-muted) !important; }
+
+.table{ color: var(--text); border-color: var(--border); }
+.table > :not(caption) > * > *{
+  background: transparent;
+  color: var(--text);
+  border-bottom-color: var(--border);
+}
+.table-hover > tbody > tr:hover > *{
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.badge.bg-secondary{ background: var(--text-muted) !important; }
+
+.alert{ border-radius: var(--r-sm); border: 1px solid var(--border); }
+.alert-danger{ background: color-mix(in srgb, #e5484d 14%, var(--bg-elevated)); color: #ff8a8f; border-color: transparent; }
+.alert-success{ background: color-mix(in srgb, #30a46c 14%, var(--bg-elevated)); color: #6fd9a4; border-color: transparent; }
+
+.btn-primary{
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent-contrast) !important;
+  border-radius: var(--r-pill);
   font-weight: 600;
 }
+.btn-primary:hover{ filter: brightness(1.08); }
 
-.glass-nav {
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(10px);
-}
-.experts-scroll-container {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 24px;
-  padding: 20px 0;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; 
+.spinner-border.text-info{ color: var(--accent) !important; }
+
+.navbar-toggler{ border-color: var(--border) !important; }
+.navbar-toggler-icon{ filter: var(--nav-icon-filter, none); }
+[data-theme="dark"] .navbar-toggler-icon{
+  filter: invert(1) grayscale(1) brightness(1.6);
 }
 
-.experts-scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Forces the cards to stay a specific size */
-.expert-card-wrapper {
-  flex: 0 0 auto; 
-  width: 280px; /* Adjust this to make cards wider or narrower */
-}
-
-@media (max-width: 768px) {
-  .expert-card-wrapper {
-    width: 85%; /* Shows one card clearly on your Pixel 4 */
-  }
-}
+/* Utility */
+.lw-muted{ color: var(--text-muted); }
+.lw-accent{ color: var(--accent); }

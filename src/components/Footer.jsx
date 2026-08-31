@@ -4,35 +4,27 @@ import { Instagram, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="mt-auto py-4 bg-white border-top">
+    <footer className="lw-footer">
       <Container className="text-center">
-        {/* New Midnight Theme Logo */}
-        <h6 
-          className="fw-bold mb-3" 
-          style={{ 
-            letterSpacing: '5px', 
-            color: '#1A1A1A', // Midnight Black
-            fontSize: '0.9rem',
-            textTransform: 'uppercase'
-          }}
-        >
-          Lumina<span style={{ fontWeight: '300', color: '#6C757D' }}>Wellbeing</span>
+        <h6 className="lw-eyebrow mb-3" style={{ letterSpacing: '0.3em' }}>
+          Lumina<span style={{ fontWeight: 400, opacity: 0.6 }}>Wellbeing</span>
         </h6>
 
-        {/* Ultra-Simple Social Media Icons */}
         <div className="d-flex justify-content-center gap-4 mb-3">
-          <a href="https://www.instagram.com/luminawellbeing_/" style={{ color: '#1A1A1A' }} aria-label="Instagram">
-            <Instagram size={18} strokeWidth={1} />
+          <a href="https://www.instagram.com/luminawellbeing_/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <Instagram size={18} strokeWidth={1.5} />
           </a>
-          <a href="https://www.linkedin.com/in/luminapsychologicalsolutions/" style={{ color: '#1A1A1A' }} aria-label="LinkedIn">
-            <Linkedin size={18} strokeWidth={1} />
+          <a href="https://www.linkedin.com/in/luminapsychologicalsolutions/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <Linkedin size={18} strokeWidth={1.5} />
           </a>
-          <a href="mailto:luminapsychologicalsolutions@gmail.com" style={{ color: '#1A1A1A' }} aria-label="Email">
-            <Mail size={18} strokeWidth={1} />
+          <a href="mailto:luminapsychologicalsolutions@gmail.com" aria-label="Email">
+            <Mail size={18} strokeWidth={1.5} />
           </a>
         </div>
 
-        
+        <p className="lw-muted mb-0" style={{ fontSize: '0.78rem' }}>
+          &copy; {new Date().getFullYear()} LuminaWellbeing. All rights reserved.
+        </p>
       </Container>
     </footer>
   );
