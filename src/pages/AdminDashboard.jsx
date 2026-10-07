@@ -16,22 +16,22 @@ export default function AdminDashboard() {
   const [newPassword, setNewPassword] = useState('');
   const [passLoading, setPassLoading] = useState(false);
 
-  // Fetch all registered users from Firestore
-  const fetchUsers = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, 'users'));
-      const userList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setUsers(userList);
-    } catch (err) {
-      console.error("Error fetching users:", err);
-      setError("Failed to load user database.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let isMounted = true;
+    async function fetchUsers() {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'users'));
+        const userList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        if (isMounted) setUsers(userList);
+      } catch (err) {
+        console.error("Error fetching users:", err);
+        if (isMounted) setError("Failed to load user database.");
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
     fetchUsers();
+    return () => { isMounted = false; };
   }, []);
 
   // Handle instant role promotion / demotion
@@ -254,7 +254,7 @@ export default function AdminDashboard() {
                       required
                     />
                   </Form.Group>
-                  <Button type="submit" variant="primary" className="w-150 rounded-pill px-4" disabled={passLoading}>
+                  <Button type="submit" variant="primary" className="w-100 rounded-pill px-4" disabled={passLoading}>
                     {passLoading ? 'Updating...' : 'Change Password'}
                   </Button>
                 </Form>

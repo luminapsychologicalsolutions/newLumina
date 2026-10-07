@@ -71,7 +71,7 @@ export default function LoginForm() {
     try {
       await sendPasswordResetEmail(auth, email);
       setMessage("Password reset email sent! Please check your inbox.");
-    } catch (err) {
+    } catch {
       setError("Failed to send reset email. Ensure the email is formatted correctly.");
     } finally {
       setLoading(false);
@@ -113,7 +113,7 @@ export default function LoginForm() {
     try {
       const userCredential = await confirmationResult.confirm(otp);
       await routeUser(userCredential.user.uid);
-    } catch (err) {
+    } catch {
       setError("Invalid OTP. Please try again.");
     } finally {
       setLoading(false);

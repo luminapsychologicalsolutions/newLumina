@@ -34,7 +34,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="lw-section">
+    <div className="lw-section animate-fade-in-up">
       <Container>
         <Reveal>
           <div className="text-center mb-5">
